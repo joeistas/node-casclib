@@ -1,0 +1,568 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="..">
+      <UniqueIdentifier>{739DB09A-CC57-A953-A6CF-F64FA08E4FA7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\CascLib">
+      <UniqueIdentifier>{AD9E2059-B461-BFBF-6BC7-62566597EB96}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\CascLib\src">
+      <UniqueIdentifier>{8CDEE807-BC53-E450-C8B8-4DEBB66742D4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\CascLib\src\zlib">
+      <UniqueIdentifier>{C0DCEB43-4CB9-1A24-382F-7A9A302B6901}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..">
+      <UniqueIdentifier>{739DB09A-CC57-A953-A6CF-F64FA08E4FA7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\CascLib">
+      <UniqueIdentifier>{AD9E2059-B461-BFBF-6BC7-62566597EB96}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\CascLib\src">
+      <UniqueIdentifier>{8CDEE807-BC53-E450-C8B8-4DEBB66742D4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\CascLib\src\zlib">
+      <UniqueIdentifier>{C0DCEB43-4CB9-1A24-382F-7A9A302B6901}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..">
+      <UniqueIdentifier>{739DB09A-CC57-A953-A6CF-F64FA08E4FA7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\CascLib">
+      <UniqueIdentifier>{AD9E2059-B461-BFBF-6BC7-62566597EB96}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\CascLib\src">
+      <UniqueIdentifier>{8CDEE807-BC53-E450-C8B8-4DEBB66742D4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\CascLib\src\zlib">
+      <UniqueIdentifier>{C0DCEB43-4CB9-1A24-382F-7A9A302B6901}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..">
+      <UniqueIdentifier>{739DB09A-CC57-A953-A6CF-F64FA08E4FA7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\CascLib">
+      <UniqueIdentifier>{AD9E2059-B461-BFBF-6BC7-62566597EB96}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\CascLib\src">
+      <UniqueIdentifier>{8CDEE807-BC53-E450-C8B8-4DEBB66742D4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\CascLib\src\zlib">
+      <UniqueIdentifier>{C0DCEB43-4CB9-1A24-382F-7A9A302B6901}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..">
+      <UniqueIdentifier>{739DB09A-CC57-A953-A6CF-F64FA08E4FA7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\CascLib">
+      <UniqueIdentifier>{AD9E2059-B461-BFBF-6BC7-62566597EB96}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\CascLib\src">
+      <UniqueIdentifier>{8CDEE807-BC53-E450-C8B8-4DEBB66742D4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\CascLib\src\zlib">
+      <UniqueIdentifier>{C0DCEB43-4CB9-1A24-382F-7A9A302B6901}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..">
+      <UniqueIdentifier>{739DB09A-CC57-A953-A6CF-F64FA08E4FA7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\CascLib">
+      <UniqueIdentifier>{AD9E2059-B461-BFBF-6BC7-62566597EB96}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\CascLib\src">
+      <UniqueIdentifier>{8CDEE807-BC53-E450-C8B8-4DEBB66742D4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\CascLib\src\zlib">
+      <UniqueIdentifier>{C0DCEB43-4CB9-1A24-382F-7A9A302B6901}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..">
+      <UniqueIdentifier>{739DB09A-CC57-A953-A6CF-F64FA08E4FA7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\CascLib">
+      <UniqueIdentifier>{AD9E2059-B461-BFBF-6BC7-62566597EB96}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\CascLib\src">
+      <UniqueIdentifier>{8CDEE807-BC53-E450-C8B8-4DEBB66742D4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\CascLib\src\libtomcrypt">
+      <UniqueIdentifier>{ABE42A37-4064-5ECB-5555-2378CB32F03C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\CascLib\src\libtomcrypt\src">
+      <UniqueIdentifier>{8CDEE807-BC53-E450-C8B8-4DEBB66742D4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\CascLib\src\libtomcrypt\src\hashes">
+      <UniqueIdentifier>{D8A9906D-CCDC-1C63-47A2-2C2593A0354A}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..">
+      <UniqueIdentifier>{739DB09A-CC57-A953-A6CF-F64FA08E4FA7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\CascLib">
+      <UniqueIdentifier>{AD9E2059-B461-BFBF-6BC7-62566597EB96}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\CascLib\src">
+      <UniqueIdentifier>{8CDEE807-BC53-E450-C8B8-4DEBB66742D4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\CascLib\src\libtomcrypt">
+      <UniqueIdentifier>{ABE42A37-4064-5ECB-5555-2378CB32F03C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\CascLib\src\libtomcrypt\src">
+      <UniqueIdentifier>{8CDEE807-BC53-E450-C8B8-4DEBB66742D4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\CascLib\src\libtomcrypt\src\hashes">
+      <UniqueIdentifier>{D8A9906D-CCDC-1C63-47A2-2C2593A0354A}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..">
+      <UniqueIdentifier>{739DB09A-CC57-A953-A6CF-F64FA08E4FA7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\CascLib">
+      <UniqueIdentifier>{AD9E2059-B461-BFBF-6BC7-62566597EB96}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\CascLib\src">
+      <UniqueIdentifier>{8CDEE807-BC53-E450-C8B8-4DEBB66742D4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\CascLib\src\libtomcrypt">
+      <UniqueIdentifier>{ABE42A37-4064-5ECB-5555-2378CB32F03C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\CascLib\src\libtomcrypt\src">
+      <UniqueIdentifier>{8CDEE807-BC53-E450-C8B8-4DEBB66742D4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\CascLib\src\libtomcrypt\src\misc">
+      <UniqueIdentifier>{CA4D9DA7-E0F1-5006-AD0E-D310350226E8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..">
+      <UniqueIdentifier>{739DB09A-CC57-A953-A6CF-F64FA08E4FA7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\CascLib">
+      <UniqueIdentifier>{AD9E2059-B461-BFBF-6BC7-62566597EB96}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\CascLib\src">
+      <UniqueIdentifier>{8CDEE807-BC53-E450-C8B8-4DEBB66742D4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\CascLib\src\libtomcrypt">
+      <UniqueIdentifier>{ABE42A37-4064-5ECB-5555-2378CB32F03C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\CascLib\src\libtomcrypt\src">
+      <UniqueIdentifier>{8CDEE807-BC53-E450-C8B8-4DEBB66742D4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\CascLib\src\libtomcrypt\src\misc">
+      <UniqueIdentifier>{CA4D9DA7-E0F1-5006-AD0E-D310350226E8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..">
+      <UniqueIdentifier>{739DB09A-CC57-A953-A6CF-F64FA08E4FA7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\CascLib">
+      <UniqueIdentifier>{AD9E2059-B461-BFBF-6BC7-62566597EB96}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\CascLib\src">
+      <UniqueIdentifier>{8CDEE807-BC53-E450-C8B8-4DEBB66742D4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\CascLib\src\libtomcrypt">
+      <UniqueIdentifier>{ABE42A37-4064-5ECB-5555-2378CB32F03C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\CascLib\src\libtomcrypt\src">
+      <UniqueIdentifier>{8CDEE807-BC53-E450-C8B8-4DEBB66742D4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\CascLib\src\libtomcrypt\src\misc">
+      <UniqueIdentifier>{CA4D9DA7-E0F1-5006-AD0E-D310350226E8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..">
+      <UniqueIdentifier>{739DB09A-CC57-A953-A6CF-F64FA08E4FA7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\CascLib">
+      <UniqueIdentifier>{AD9E2059-B461-BFBF-6BC7-62566597EB96}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\CascLib\src">
+      <UniqueIdentifier>{8CDEE807-BC53-E450-C8B8-4DEBB66742D4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\CascLib\src\libtomcrypt">
+      <UniqueIdentifier>{ABE42A37-4064-5ECB-5555-2378CB32F03C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\CascLib\src\libtomcrypt\src">
+      <UniqueIdentifier>{8CDEE807-BC53-E450-C8B8-4DEBB66742D4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\CascLib\src\libtomcrypt\src\misc">
+      <UniqueIdentifier>{CA4D9DA7-E0F1-5006-AD0E-D310350226E8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..">
+      <UniqueIdentifier>{739DB09A-CC57-A953-A6CF-F64FA08E4FA7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\CascLib">
+      <UniqueIdentifier>{AD9E2059-B461-BFBF-6BC7-62566597EB96}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\CascLib\src">
+      <UniqueIdentifier>{8CDEE807-BC53-E450-C8B8-4DEBB66742D4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\CascLib\src\common">
+      <UniqueIdentifier>{2F5FD094-EF52-77F7-7AA8-4327A01BF747}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..">
+      <UniqueIdentifier>{739DB09A-CC57-A953-A6CF-F64FA08E4FA7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\CascLib">
+      <UniqueIdentifier>{AD9E2059-B461-BFBF-6BC7-62566597EB96}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\CascLib\src">
+      <UniqueIdentifier>{8CDEE807-BC53-E450-C8B8-4DEBB66742D4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\CascLib\src\common">
+      <UniqueIdentifier>{2F5FD094-EF52-77F7-7AA8-4327A01BF747}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..">
+      <UniqueIdentifier>{739DB09A-CC57-A953-A6CF-F64FA08E4FA7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\CascLib">
+      <UniqueIdentifier>{AD9E2059-B461-BFBF-6BC7-62566597EB96}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\CascLib\src">
+      <UniqueIdentifier>{8CDEE807-BC53-E450-C8B8-4DEBB66742D4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\CascLib\src\common">
+      <UniqueIdentifier>{2F5FD094-EF52-77F7-7AA8-4327A01BF747}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..">
+      <UniqueIdentifier>{739DB09A-CC57-A953-A6CF-F64FA08E4FA7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\CascLib">
+      <UniqueIdentifier>{AD9E2059-B461-BFBF-6BC7-62566597EB96}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\CascLib\src">
+      <UniqueIdentifier>{8CDEE807-BC53-E450-C8B8-4DEBB66742D4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\CascLib\src\common">
+      <UniqueIdentifier>{2F5FD094-EF52-77F7-7AA8-4327A01BF747}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..">
+      <UniqueIdentifier>{739DB09A-CC57-A953-A6CF-F64FA08E4FA7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\CascLib">
+      <UniqueIdentifier>{AD9E2059-B461-BFBF-6BC7-62566597EB96}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\CascLib\src">
+      <UniqueIdentifier>{8CDEE807-BC53-E450-C8B8-4DEBB66742D4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\CascLib\src\common">
+      <UniqueIdentifier>{2F5FD094-EF52-77F7-7AA8-4327A01BF747}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..">
+      <UniqueIdentifier>{739DB09A-CC57-A953-A6CF-F64FA08E4FA7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\CascLib">
+      <UniqueIdentifier>{AD9E2059-B461-BFBF-6BC7-62566597EB96}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\CascLib\src">
+      <UniqueIdentifier>{8CDEE807-BC53-E450-C8B8-4DEBB66742D4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\CascLib\src\common">
+      <UniqueIdentifier>{2F5FD094-EF52-77F7-7AA8-4327A01BF747}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..">
+      <UniqueIdentifier>{739DB09A-CC57-A953-A6CF-F64FA08E4FA7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\CascLib">
+      <UniqueIdentifier>{AD9E2059-B461-BFBF-6BC7-62566597EB96}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\CascLib\src">
+      <UniqueIdentifier>{8CDEE807-BC53-E450-C8B8-4DEBB66742D4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\CascLib\src\common">
+      <UniqueIdentifier>{2F5FD094-EF52-77F7-7AA8-4327A01BF747}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..">
+      <UniqueIdentifier>{739DB09A-CC57-A953-A6CF-F64FA08E4FA7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\CascLib">
+      <UniqueIdentifier>{AD9E2059-B461-BFBF-6BC7-62566597EB96}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\CascLib\src">
+      <UniqueIdentifier>{8CDEE807-BC53-E450-C8B8-4DEBB66742D4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\CascLib\src\common">
+      <UniqueIdentifier>{2F5FD094-EF52-77F7-7AA8-4327A01BF747}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..">
+      <UniqueIdentifier>{739DB09A-CC57-A953-A6CF-F64FA08E4FA7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\CascLib">
+      <UniqueIdentifier>{AD9E2059-B461-BFBF-6BC7-62566597EB96}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\CascLib\src">
+      <UniqueIdentifier>{8CDEE807-BC53-E450-C8B8-4DEBB66742D4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\CascLib\src\jenkins">
+      <UniqueIdentifier>{C5D7726A-0BD3-F7AF-DB62-7E4D1A53E44E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..">
+      <UniqueIdentifier>{739DB09A-CC57-A953-A6CF-F64FA08E4FA7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\CascLib">
+      <UniqueIdentifier>{AD9E2059-B461-BFBF-6BC7-62566597EB96}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\CascLib\src">
+      <UniqueIdentifier>{8CDEE807-BC53-E450-C8B8-4DEBB66742D4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..">
+      <UniqueIdentifier>{739DB09A-CC57-A953-A6CF-F64FA08E4FA7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\CascLib">
+      <UniqueIdentifier>{AD9E2059-B461-BFBF-6BC7-62566597EB96}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\CascLib\src">
+      <UniqueIdentifier>{8CDEE807-BC53-E450-C8B8-4DEBB66742D4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..">
+      <UniqueIdentifier>{739DB09A-CC57-A953-A6CF-F64FA08E4FA7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\CascLib">
+      <UniqueIdentifier>{AD9E2059-B461-BFBF-6BC7-62566597EB96}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\CascLib\src">
+      <UniqueIdentifier>{8CDEE807-BC53-E450-C8B8-4DEBB66742D4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..">
+      <UniqueIdentifier>{739DB09A-CC57-A953-A6CF-F64FA08E4FA7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\CascLib">
+      <UniqueIdentifier>{AD9E2059-B461-BFBF-6BC7-62566597EB96}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\CascLib\src">
+      <UniqueIdentifier>{8CDEE807-BC53-E450-C8B8-4DEBB66742D4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..">
+      <UniqueIdentifier>{739DB09A-CC57-A953-A6CF-F64FA08E4FA7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\CascLib">
+      <UniqueIdentifier>{AD9E2059-B461-BFBF-6BC7-62566597EB96}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\CascLib\src">
+      <UniqueIdentifier>{8CDEE807-BC53-E450-C8B8-4DEBB66742D4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..">
+      <UniqueIdentifier>{739DB09A-CC57-A953-A6CF-F64FA08E4FA7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\CascLib">
+      <UniqueIdentifier>{AD9E2059-B461-BFBF-6BC7-62566597EB96}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\CascLib\src">
+      <UniqueIdentifier>{8CDEE807-BC53-E450-C8B8-4DEBB66742D4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..">
+      <UniqueIdentifier>{739DB09A-CC57-A953-A6CF-F64FA08E4FA7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\CascLib">
+      <UniqueIdentifier>{AD9E2059-B461-BFBF-6BC7-62566597EB96}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\CascLib\src">
+      <UniqueIdentifier>{8CDEE807-BC53-E450-C8B8-4DEBB66742D4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..">
+      <UniqueIdentifier>{739DB09A-CC57-A953-A6CF-F64FA08E4FA7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\CascLib">
+      <UniqueIdentifier>{AD9E2059-B461-BFBF-6BC7-62566597EB96}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\CascLib\src">
+      <UniqueIdentifier>{8CDEE807-BC53-E450-C8B8-4DEBB66742D4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..">
+      <UniqueIdentifier>{739DB09A-CC57-A953-A6CF-F64FA08E4FA7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\CascLib">
+      <UniqueIdentifier>{AD9E2059-B461-BFBF-6BC7-62566597EB96}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\CascLib\src">
+      <UniqueIdentifier>{8CDEE807-BC53-E450-C8B8-4DEBB66742D4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..">
+      <UniqueIdentifier>{739DB09A-CC57-A953-A6CF-F64FA08E4FA7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\CascLib">
+      <UniqueIdentifier>{AD9E2059-B461-BFBF-6BC7-62566597EB96}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\CascLib\src">
+      <UniqueIdentifier>{8CDEE807-BC53-E450-C8B8-4DEBB66742D4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..">
+      <UniqueIdentifier>{739DB09A-CC57-A953-A6CF-F64FA08E4FA7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\CascLib">
+      <UniqueIdentifier>{AD9E2059-B461-BFBF-6BC7-62566597EB96}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\CascLib\src">
+      <UniqueIdentifier>{8CDEE807-BC53-E450-C8B8-4DEBB66742D4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..">
+      <UniqueIdentifier>{739DB09A-CC57-A953-A6CF-F64FA08E4FA7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\CascLib">
+      <UniqueIdentifier>{AD9E2059-B461-BFBF-6BC7-62566597EB96}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\CascLib\src">
+      <UniqueIdentifier>{8CDEE807-BC53-E450-C8B8-4DEBB66742D4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..">
+      <UniqueIdentifier>{739DB09A-CC57-A953-A6CF-F64FA08E4FA7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\CascLib">
+      <UniqueIdentifier>{AD9E2059-B461-BFBF-6BC7-62566597EB96}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\CascLib\src">
+      <UniqueIdentifier>{8CDEE807-BC53-E450-C8B8-4DEBB66742D4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..">
+      <UniqueIdentifier>{739DB09A-CC57-A953-A6CF-F64FA08E4FA7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\CascLib">
+      <UniqueIdentifier>{AD9E2059-B461-BFBF-6BC7-62566597EB96}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\CascLib\src">
+      <UniqueIdentifier>{8CDEE807-BC53-E450-C8B8-4DEBB66742D4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="C:">
+      <UniqueIdentifier>{7B735499-E5DD-1C2B-6C26-70023832A1CF}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="C:\Users">
+      <UniqueIdentifier>{E9F714C1-DA89-54E2-60CF-39FEB20BF756}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="C:\Users\Joe">
+      <UniqueIdentifier>{0E461B26-C15A-5BC8-1E15-B42566AEB6D6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="C:\Users\Joe\AppData">
+      <UniqueIdentifier>{F852EB63-437C-846A-220F-8D9ED6DAEC1D}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="C:\Users\Joe\AppData\Local">
+      <UniqueIdentifier>{AA1ADE49-EB66-4CF9-B60D-A95495F1ED01}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="C:\Users\Joe\AppData\Local\Yarn">
+      <UniqueIdentifier>{FA5927EF-CF69-B9AB-5A67-B0A2AC089CE0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="C:\Users\Joe\AppData\Local\Yarn\config">
+      <UniqueIdentifier>{31A163C0-193D-20CC-1C7F-55B57F22C481}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="C:\Users\Joe\AppData\Local\Yarn\config\global">
+      <UniqueIdentifier>{08732C5E-13F8-6402-4E7A-3D27527B9889}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="C:\Users\Joe\AppData\Local\Yarn\config\global\node_modules">
+      <UniqueIdentifier>{56DF7A98-063D-FB9D-485C-089023B4C16A}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="C:\Users\Joe\AppData\Local\Yarn\config\global\node_modules\node-gyp">
+      <UniqueIdentifier>{77348C0E-2034-7791-74D5-63C077DF5A3B}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="C:\Users\Joe\AppData\Local\Yarn\config\global\node_modules\node-gyp\src">
+      <UniqueIdentifier>{8CDEE807-BC53-E450-C8B8-4DEBB66742D4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..">
+      <UniqueIdentifier>{739DB09A-CC57-A953-A6CF-F64FA08E4FA7}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\CascLib\src\zlib\adler32.c">
+      <Filter>..\CascLib\src\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CascLib\src\zlib\crc32.c">
+      <Filter>..\CascLib\src\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CascLib\src\zlib\inffast.c">
+      <Filter>..\CascLib\src\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CascLib\src\zlib\inflate.c">
+      <Filter>..\CascLib\src\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CascLib\src\zlib\inftrees.c">
+      <Filter>..\CascLib\src\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CascLib\src\zlib\zutil.c">
+      <Filter>..\CascLib\src\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CascLib\src\libtomcrypt\src\hashes\hash_memory.c">
+      <Filter>..\CascLib\src\libtomcrypt\src\hashes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CascLib\src\libtomcrypt\src\hashes\md5.c">
+      <Filter>..\CascLib\src\libtomcrypt\src\hashes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CascLib\src\libtomcrypt\src\misc\crypt_argchk.c">
+      <Filter>..\CascLib\src\libtomcrypt\src\misc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CascLib\src\libtomcrypt\src\misc\crypt_hash_descriptor.c">
+      <Filter>..\CascLib\src\libtomcrypt\src\misc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CascLib\src\libtomcrypt\src\misc\crypt_hash_is_valid.c">
+      <Filter>..\CascLib\src\libtomcrypt\src\misc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CascLib\src\libtomcrypt\src\misc\crypt_libc.c">
+      <Filter>..\CascLib\src\libtomcrypt\src\misc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CascLib\src\common\Common.cpp">
+      <Filter>..\CascLib\src\common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CascLib\src\common\Directory.cpp">
+      <Filter>..\CascLib\src\common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CascLib\src\common\DumpContext.cpp">
+      <Filter>..\CascLib\src\common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CascLib\src\common\DynamicArray.cpp">
+      <Filter>..\CascLib\src\common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CascLib\src\common\FileStream.cpp">
+      <Filter>..\CascLib\src\common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CascLib\src\common\ListFile.cpp">
+      <Filter>..\CascLib\src\common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CascLib\src\common\Map.cpp">
+      <Filter>..\CascLib\src\common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CascLib\src\common\RootHandler.cpp">
+      <Filter>..\CascLib\src\common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CascLib\src\jenkins\lookup3.c">
+      <Filter>..\CascLib\src\jenkins</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CascLib\src\CascCommon.cpp">
+      <Filter>..\CascLib\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CascLib\src\CascDecompress.cpp">
+      <Filter>..\CascLib\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CascLib\src\CascDecrypt.cpp">
+      <Filter>..\CascLib\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CascLib\src\CascDumpData.cpp">
+      <Filter>..\CascLib\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CascLib\src\CascFiles.cpp">
+      <Filter>..\CascLib\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CascLib\src\CascFindFile.cpp">
+      <Filter>..\CascLib\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CascLib\src\CascOpenFile.cpp">
+      <Filter>..\CascLib\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CascLib\src\CascOpenStorage.cpp">
+      <Filter>..\CascLib\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CascLib\src\CascReadFile.cpp">
+      <Filter>..\CascLib\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CascLib\src\CascRootFile_SC1.cpp">
+      <Filter>..\CascLib\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CascLib\src\CascRootFile_Diablo3.cpp">
+      <Filter>..\CascLib\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CascLib\src\CascRootFile_Mndx.cpp">
+      <Filter>..\CascLib\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CascLib\src\CascRootFile_Ovr.cpp">
+      <Filter>..\CascLib\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CascLib\src\CascRootFile_WoW6.cpp">
+      <Filter>..\CascLib\src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Joe\AppData\Local\Yarn\config\global\node_modules\node-gyp\src\win_delay_load_hook.cc">
+      <Filter>C:\Users\Joe\AppData\Local\Yarn\config\global\node_modules\node-gyp\src</Filter>
+    </ClCompile>
+    <None Include="..\binding.gyp">
+      <Filter>..</Filter>
+    </None>
+  </ItemGroup>
+</Project>

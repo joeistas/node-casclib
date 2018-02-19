@@ -1,0 +1,21 @@
+{
+    "main": "lib/binding.js",
+    "dependencies": {
+        "node-addon-api": "^1.1.0"
+    },
+    "scripts": {
+        "pretest": "tsc",
+        "build": "node-gyp build",
+        "test": "node --napi-modules ./test/test_binding.js"
+    },
+    "gypfile": true,
+    "name": "casclib",
+    "version": "0.0.1",
+    "description": "CascLib node bindings",
+    "author": "Joe Istas <joe.istas@istastech.com>",
+    "license": "ISC",
+    "devDependencies": {
+        "@types/node": "^7.0.22",
+        "typescript": "^2.3.3"
+    }
+}
