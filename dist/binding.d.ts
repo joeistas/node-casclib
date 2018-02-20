@@ -12,7 +12,14 @@ export interface StorageInfo {
     gameBuild: number;
     installedLocales: string[];
 }
-export declare function openCascStorageSync(path: string, locales?: string[]): any;
-export declare function openCascStorage(path: string, locales?: string[], callback?: (error: Error, handle: any) => void): any;
-export declare function closeCascStorage(storageHandle: any): void;
-export declare function getCascStorageInfo(storageHandle: any): StorageInfo;
+export interface FindResult {
+    fullName: string;
+    baseName: string;
+    fileSize: number;
+}
+export declare function openSync(path: string, locales?: string[]): any;
+export declare function open(path: string, locales?: string[], callback?: (error: Error, handle: any) => void): null | Promise<any>;
+export declare function close(storageHandle: any): void;
+export declare function getStorageInfo(storageHandle: any): StorageInfo;
+export declare function findFilesSync(storageHandle: any, searchPattern: string, listFilePath?: string): FindResult[];
+export declare function findFiles(storageHandle: any, searchPattern: string, listFilePath?: string, callback?: (error: Error, results: FindResult[]) => void): FindResult[];

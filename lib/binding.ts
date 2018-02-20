@@ -25,6 +25,12 @@ export interface StorageInfo {
   installedLocales: string[],
 }
 
+export interface FindResult {
+  fullName: string
+  baseName: string
+  fileSize: number
+}
+
 function localeMaskToList(localeMask: number): string[] {
   return Object.entries(addon.locales)
     .filter(([name, mask]) => name !== 'ALL' && (localeMask & mask) !== 0)
@@ -38,19 +44,19 @@ function localesToMask(locales: string[]): number {
   return mask
 }
 
-export function openCascStorageSync(path: string, locales: string[] = []) {
+export function openSync(path: string, locales: string[] = []) {
   return addon.openCascStorageSync(path, localesToMask(locales))
 }
 
-export function openCascStorage(path: string, locales: string[] = [], callback?: (error: Error, handle: any) => void): null | Promise<any> {
+export function open(path: string, locales: string[] = [], callback?: (error: Error, handle: any) => void): null | Promise<any> {
   return addon.openCascStorage(path, localesToMask(locales), callback)
 }
 
-export function closeCascStorage(storageHandle: any) {
+export function close(storageHandle: any) {
   addon.closeCascStorage(storageHandle)
 }
 
-export function getCascStorageInfo(storageHandle: any): StorageInfo {
+export function getStorageInfo(storageHandle: any): StorageInfo {
   const info = addon.getCascStorageInfo(storageHandle) as AddonStorageInfo
 
   return {
@@ -59,4 +65,17 @@ export function getCascStorageInfo(storageHandle: any): StorageInfo {
     gameBuild: info.gameBuild,
     installedLocales: localeMaskToList(info.installedLocales),
   }
+}
+
+export function findFilesSync(storageHandle: any, searchPattern: string, listFilePath: string = ''): FindResult[] {
+  return addon.findCascFilesSync(storageHandle, searchPattern, listFilePath)
+}
+
+export function findFiles(
+  storageHandle: any,
+  searchPattern: string,
+  listFilePath: string = '',
+  callback?: (error: Error, results: FindResult[]) => void
+): FindResult[] {
+  return addon.findCascFiles(storageHandle, searchPattern, listFilePath, callback)
 }

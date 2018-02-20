@@ -12,19 +12,19 @@ function localesToMask(locales) {
     locales.forEach(name => mask |= addon.locales[name]);
     return mask;
 }
-function openCascStorageSync(path, locales = []) {
+function openSync(path, locales = []) {
     return addon.openCascStorageSync(path, localesToMask(locales));
 }
-exports.openCascStorageSync = openCascStorageSync;
-function openCascStorage(path, locales = [], callback) {
+exports.openSync = openSync;
+function open(path, locales = [], callback) {
     return addon.openCascStorage(path, localesToMask(locales), callback);
 }
-exports.openCascStorage = openCascStorage;
-function closeCascStorage(storageHandle) {
+exports.open = open;
+function close(storageHandle) {
     addon.closeCascStorage(storageHandle);
 }
-exports.closeCascStorage = closeCascStorage;
-function getCascStorageInfo(storageHandle) {
+exports.close = close;
+function getStorageInfo(storageHandle) {
     const info = addon.getCascStorageInfo(storageHandle);
     return {
         fileCount: info.fileCount,
@@ -33,4 +33,12 @@ function getCascStorageInfo(storageHandle) {
         installedLocales: localeMaskToList(info.installedLocales),
     };
 }
-exports.getCascStorageInfo = getCascStorageInfo;
+exports.getStorageInfo = getStorageInfo;
+function findFilesSync(storageHandle, searchPattern, listFilePath = '') {
+    return addon.findCascFilesSync(storageHandle, searchPattern, listFilePath);
+}
+exports.findFilesSync = findFilesSync;
+function findFiles(storageHandle, searchPattern, listFilePath = '', callback) {
+    return addon.findCascFiles(storageHandle, searchPattern, listFilePath, callback);
+}
+exports.findFiles = findFiles;

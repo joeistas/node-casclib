@@ -20,10 +20,13 @@ const assert = require("assert");
 //
 // console.log("Tests passed- everything looks OK!");
 
-const handle = Casclib.openCascStorageSync("C:\\Program Files (x86)\\Heroes of the Storm")
-console.log(handle)
-console.log(Casclib.getCascStorageInfo(handle))
-Casclib.closeCascStorage(handle)
+// const handle = Casclib.openSync("C:\\Program Files (x86)\\Heroes of the Storm")
+// console.log(handle)
+// console.log(Casclib.getStorageInfo(handle))
+// const results = Casclib.findFilesSync(handle, "mods/heroes.stormmod/esmx.stormassets/LocalizedData/Sounds/VO/Probius*")
+// console.log(results.length)
+// console.log(results[0])
+// Casclib.close(handle)
 
 // Casclib.openCascStorage("C:\\Program Files (x86)\\Heroes of the Storm", [], function(error, handle) {
 //   console.log("Callback")
@@ -31,12 +34,17 @@ Casclib.closeCascStorage(handle)
 //   Casclib.closeCascStorage(handle)
 // })
 
-Casclib.openCascStorage("C:\\Program Files (x86)\\Heroes of the Storm")
+Casclib.open("C:\\Program Files (x86)\\Heroes of the Storm")
   .then(handle => {
     console.log("Promise")
     console.log(handle)
-    console.log(Casclib.getCascStorageInfo(handle))
-    Casclib.closeCascStorage(handle)
+    console.log(Casclib.getStorageInfo(handle))
+    return Casclib.findFiles(handle, "mods/heroes.stormmod/esmx.stormassets/LocalizedData/Sounds/VO/Probius*")
+      .then(results => {
+        console.log(results.length)
+        console.log(results[0], results[1])
+        Casclib.close(handle)
+      })
   })
   .catch(error => console.log(error))
 

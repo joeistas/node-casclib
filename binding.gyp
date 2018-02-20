@@ -7,6 +7,7 @@
                 'src/locales.cc',
                 'src/storageinfo.cc',
                 'src/storage.cc',
+                'src/find.cc',
                 'src/casclib.cc',
             ],
             'include_dirs': [

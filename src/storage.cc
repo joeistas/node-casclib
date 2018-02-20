@@ -26,11 +26,11 @@ bool ValidateOpenStorageArguments(const Napi::CallbackInfo& info) {
     }
 
     if(!info[0].IsString()) {
-        errors::ThrowJavascriptTypeError(env, "Missing path to CASC storage");
+        errors::ThrowJavascriptTypeError(env, "CASC storage path must be a string");
         return false;
     }
 
-    if(info.Length() >= 2 && !info[0].IsString()) {
+    if(info.Length() >= 2 && !info[1].IsNumber()) {
         errors::ThrowJavascriptTypeError(env, "localeMask must be a bit mask");
         return false;
     }
@@ -139,13 +139,13 @@ Napi::Value storage::OpenAsyncWorker::StorageHandle() {
 // PromiseOpenAsyncWorker class
 ////////////////////////////////////////////////////////////////////////////////
 
-// Empy callback for Promise AsyncWorker
-void PromiseCallback(const Napi::CallbackInfo& info) {
+// Empty callback for Promise AsyncWorker
+void PromiseOpenCallback(const Napi::CallbackInfo& info) {
 
 }
 
 storage::PromiseOpenAsyncWorker::PromiseOpenAsyncWorker(const Napi::Promise::Deferred& deferred, const char* storagePath, const DWORD localeMask)
-    : storage::OpenAsyncWorker(Napi::Function::New(deferred.Promise().Env(), PromiseCallback), storagePath, localeMask),
+    : storage::OpenAsyncWorker(Napi::Function::New(deferred.Promise().Env(), PromiseOpenCallback), storagePath, localeMask),
     deferred { deferred } {
 
 }
