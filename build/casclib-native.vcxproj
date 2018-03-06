@@ -145,6 +145,8 @@
     <ClCompile Include="..\src\storageinfo.cc"/>
     <ClCompile Include="..\src\storage.cc"/>
     <ClCompile Include="..\src\find.cc"/>
+    <ClCompile Include="..\src\openfile.cc"/>
+    <ClCompile Include="..\src\readfile.cc"/>
     <ClCompile Include="..\src\casclib.cc"/>
     <ClCompile Include="C:\Users\Joe\AppData\Local\Yarn\config\global\node_modules\node-gyp\src\win_delay_load_hook.cc"/>
   </ItemGroup>

@@ -8,6 +8,8 @@
                 'src/storageinfo.cc',
                 'src/storage.cc',
                 'src/find.cc',
+                'src/openfile.cc',
+                'src/readfile.cc',
                 'src/casclib.cc',
             ],
             'include_dirs': [

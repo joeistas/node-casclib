@@ -1,4 +1,3 @@
-#include <iostream>
 #include <string>
 #include <CascLib.h>
 #include "node_api.h"

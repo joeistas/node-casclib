@@ -31,6 +31,10 @@ export interface FindResult {
   fileSize: number
 }
 
+export type OpenStorageCallback = (error: Error, storageHandle: any) => void
+export type OpenFileCallback = (error: Error, fileHandle: any) => void
+export type ReadFileCallback = (error: Error, fileData: Buffer) => void
+
 function localeMaskToList(localeMask: number): string[] {
   return Object.entries(addon.locales)
     .filter(([name, mask]) => name !== 'ALL' && (localeMask & mask) !== 0)
@@ -44,15 +48,26 @@ function localesToMask(locales: string[]): number {
   return mask
 }
 
-export function openSync(path: string, locales: string[] = []) {
+export function openStorageSync(path: string, locales: string[] = []) {
   return addon.openCascStorageSync(path, localesToMask(locales))
 }
 
-export function open(path: string, locales: string[] = [], callback?: (error: Error, handle: any) => void): null | Promise<any> {
+export function openStorage(path: string): Promise<any>
+export function openStorage(path: string, locales: string[]): Promise<any>
+export function openStorage(path: string, locales: string[], callback: OpenStorageCallback): null
+export function openStorage(path: string, callback: OpenStorageCallback): null
+export function openStorage(path: string, localesOrCallback: string[] | OpenStorageCallback = [], callback?: OpenStorageCallback): null | Promise<any> {
+  let locales = [ addon.locales['ALL'] ]
+  if(Array.isArray(localesOrCallback)) {
+    locales = localesOrCallback
+  }
+  else {
+    callback = localesOrCallback
+  }
   return addon.openCascStorage(path, localesToMask(locales), callback)
 }
 
-export function close(storageHandle: any) {
+export function closeStorage(storageHandle: any) {
   addon.closeCascStorage(storageHandle)
 }
 
@@ -67,7 +82,7 @@ export function getStorageInfo(storageHandle: any): StorageInfo {
   }
 }
 
-export function findFilesSync(storageHandle: any, searchPattern: string, listFilePath: string = ''): FindResult[] {
+export function findFilesSync(storageHandle: any, searchPattern: string = "*", listFilePath: string = ''): FindResult[] {
   return addon.findCascFilesSync(storageHandle, searchPattern, listFilePath)
 }
 
@@ -76,6 +91,53 @@ export function findFiles(
   searchPattern: string,
   listFilePath: string = '',
   callback?: (error: Error, results: FindResult[]) => void
-): FindResult[] {
+): null | Promise<FindResult[]> {
   return addon.findCascFiles(storageHandle, searchPattern, listFilePath, callback)
+}
+
+export function openFileSync(storageHandle: any, filePath: string) {
+  return addon.openCascFileSync(storageHandle, filePath)
+}
+
+export function openFile(storageHandle: any, filePath: string): Promise<any>
+export function openFile(storageHandle: any, filePath: string, callback: OpenFileCallback): null
+export function openFile(storageHandle: any, filePath: string, callback?: OpenFileCallback): null | Promise<any> {
+  return addon.openCascFile(storageHandle, filePath, callback)
+}
+
+export function closeFile(fileHandle: any) {
+  return addon.closeCascFile(fileHandle)
+}
+
+export function readSync(fileHandle: any): Buffer {
+  return addon.cascReadSync(fileHandle)
+}
+
+export function read(fileHandle: any): Promise<Buffer>
+export function read(fileHandle: any, callback: ReadFileCallback): null
+export function read(fileHandle: any, callback?: ReadFileCallback): null | Promise<Buffer> {
+  return addon.cascRead(fileHandle, callback)
+}
+
+export function readFileSync(storageHandle: any, filePath: string) {
+  const fileHandle = openFileSync(storageHandle, filePath)
+  return readSync(fileHandle)
+}
+
+export function readFile(storageHandle: any, filePath: string): Promise<any>
+export function readFile(storageHandle: any, filePath: string, callback: ReadFileCallback): null
+export function readFile(storageHandle: any, filePath: string, callback?: ReadFileCallback): null | Promise<any> {
+  if(callback) {
+    openFile(storageHandle, filePath, (error: Error, fileHandle: any) => {
+      if(error) {
+        throw error
+      }
+
+      read(fileHandle, callback)
+    })
+    return null
+  }
+
+  return openFile(storageHandle, filePath)
+    .then(fileHandle => read(fileHandle))
 }
