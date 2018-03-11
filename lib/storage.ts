@@ -28,7 +28,7 @@ export interface StorageInfo {
 export type OpenStorageCallback = (error: Error, storageHandle: any) => void
 
 function localeMaskToList(localeMask: number): string[] {
-  return Object.entries(addon.locales)
+  return Object.entries(addon.locales as { [name: string]: number })
     .filter(([name, mask]) => name !== 'ALL' && (localeMask & mask) !== 0)
     .map(([name, mask]) => name)
 }
@@ -46,21 +46,18 @@ export function openStorageSync(path: string, locales: string[] = []) {
 
 export function openStorage(path: string): Promise<any>
 export function openStorage(path: string, locales: string[]): Promise<any>
-export function openStorage(path: string, locales: string[], callback: OpenStorageCallback): null
 export function openStorage(path: string, callback: OpenStorageCallback): null
+export function openStorage(path: string, locales: string[], callback: OpenStorageCallback): null
 export function openStorage(path: string, localesOrCallback: string[] | OpenStorageCallback = [], callback?: OpenStorageCallback): null | Promise<any> {
-  let locales = [ addon.locales['ALL'] ]
+  let locales = [ 'ALL' ]
   if(Array.isArray(localesOrCallback)) {
     locales = localesOrCallback
   }
   else {
     callback = localesOrCallback
   }
-  return addon.openCascStorage(path, localesToMask(locales), callback)
-}
 
-export function closeStorage(storageHandle: any) {
-  addon.closeCascStorage(storageHandle)
+  return addon.openCascStorage(path, localesToMask(locales), callback)
 }
 
 export function getStorageInfo(storageHandle: any): StorageInfo {
