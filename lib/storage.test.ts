@@ -21,7 +21,6 @@ describe("openStorage", () => {
   describe("with callback", () => {
     test("open storage with no locales", done => {
       storage.openStorage(testData.storageLocation, (error, storageHandle) => {
-        console.log("callback")
         expect(error).toBeUndefined()
         expect(storageHandle).toBeDefined()
         done()
