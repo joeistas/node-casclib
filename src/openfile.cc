@@ -27,14 +27,10 @@ bool ValidateOpenFileArguments(const Napi::CallbackInfo& info) {
     return true;
 }
 
-void CloseFile(Napi::Env env, HANDLE fileHandle) {
-    if(!CascCloseFile(fileHandle)) {
+void CloseFile(Napi::Env env, void* fileHandle) {
+    if(!CascCloseFile((HANDLE)fileHandle)) {
         errors::ThrowJavascriptErrorWithLastError(env, "Unable to close file.");
     }
-}
-
-void FinalizeFileHandle(Napi::Env env, void* data) {
-    CloseFile(env, (HANDLE)data);
 }
 
 Napi::Value OpenCascFileSync(const Napi::CallbackInfo& info) {
@@ -54,7 +50,7 @@ Napi::Value OpenCascFileSync(const Napi::CallbackInfo& info) {
         return env.Null();
     }
 
-    return Napi::External<void>::New(env, (void*)fileHandle, &FinalizeFileHandle);
+    return Napi::External<void>::New(env, (void*)fileHandle, &CloseFile);
 }
 
 Napi::Value OpenCascFile(const Napi::CallbackInfo& info) {
@@ -83,23 +79,6 @@ Napi::Value OpenCascFile(const Napi::CallbackInfo& info) {
     }
 }
 
-void CloseCascFile(const Napi::CallbackInfo& info) {
-    Napi::Env env = info.Env();
-
-    if(info.Length() < 1) {
-      errors::ThrowJavascriptTypeError(env, "Wrong number of arguments");
-      return;
-    }
-
-    if(info[0].IsEmpty() || info[0].IsUndefined() || info[0].IsNull()) {
-        errors::ThrowJavascriptTypeError(env, "File handle must be defined.");
-        return;
-    }
-
-    HANDLE fileHandle = (HANDLE)info[0].As<Napi::External<void>>().Data();
-    CloseFile(env, fileHandle);
-}
-
 ////////////////////////////////////////////////////////////////////////////////
 // OpenAsyncWorker class
 ////////////////////////////////////////////////////////////////////////////////
@@ -122,7 +101,7 @@ void openfile::OpenAsyncWorker::OnOK() {
 }
 
 Napi::Value openfile::OpenAsyncWorker::FileHandle() {
-    return Napi::External<void>::New(Env(), (void*)fileHandle, &FinalizeFileHandle);
+    return Napi::External<void>::New(Env(), (void*)fileHandle, &CloseFile);
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -161,10 +140,5 @@ void openfile::Init(Napi::Env env, Napi::Object exports) {
     exports.Set(
         Napi::String::New(env, "openCascFile"),
         Napi::Function::New(env, OpenCascFile)
-    );
-
-    exports.Set(
-        Napi::String::New(env, "closeCascFile"),
-        Napi::Function::New(env, CloseCascFile)
     );
 }

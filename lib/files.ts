@@ -13,10 +13,6 @@ export function openFile(storageHandle: any, filePath: string, callback?: OpenFi
   return addon.openCascFile(storageHandle, filePath, callback)
 }
 
-export function closeFile(fileHandle: any) {
-  return addon.closeCascFile(fileHandle)
-}
-
 export function readSync(fileHandle: any): Buffer {
   return addon.cascReadSync(fileHandle)
 }
@@ -32,9 +28,9 @@ export function readFileSync(storageHandle: any, filePath: string) {
   return readSync(fileHandle)
 }
 
-export function readFile(storageHandle: any, filePath: string): Promise<any>
+export function readFile(storageHandle: any, filePath: string): Promise<Buffer>
 export function readFile(storageHandle: any, filePath: string, callback: ReadFileCallback): null
-export function readFile(storageHandle: any, filePath: string, callback?: ReadFileCallback): null | Promise<any> {
+export function readFile(storageHandle: any, filePath: string, callback?: ReadFileCallback): null | Promise<Buffer> {
   if(callback) {
     openFile(storageHandle, filePath, (error: Error, fileHandle: any) => {
       if(error) {
