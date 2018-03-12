@@ -1,6 +1,6 @@
 import "jest"
-import * as storage from "./storage"
-import * as find from "./find"
+import * as storage from "../lib/storage"
+import * as find from "../lib/find"
 
 const testData = require("../test-data.json")
 

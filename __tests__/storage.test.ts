@@ -1,5 +1,5 @@
 import "jest"
-import * as storage from "./storage"
+import * as storage from "../lib/storage"
 
 const testData = require("../test-data.json")
 

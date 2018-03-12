@@ -4,8 +4,7 @@
     "node-addon-api": "^1.1.0"
   },
   "scripts": {
-    "pretest": "tsc",
-    "build": "node-gyp build",
+    "build": "node-gyp build && tsc",
     "test": "jest"
   },
   "gypfile": true,
@@ -22,6 +21,17 @@
     "typescript": "^2.3.3"
   },
   "jest": {
-    "testRegex": "/dist/.*\\.(test|spec)\\.jsx?$"
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ]
   }
 }
