@@ -4,21 +4,13 @@ import * as files from "../lib/files"
 
 const testData = require("../test-data.json")
 
-const fileExpectations = [
-  expect.stringContaining('<?xml version="1.0" encoding="us-ascii"?>'),
-  expect.stringContaining('<Catalog>'),
-  expect.stringContaining('<CHero default="1">'),
-  expect.stringContaining('</CHero>'),
-  expect.stringContaining('</Catalog>'),
-]
-
 function testBuffer(buffer: Buffer) {
   expect(buffer).toBeInstanceOf(Buffer)
 
   const str = buffer.toString("utf8")
 
-  fileExpectations.forEach(expectation => {
-    expect(str).toEqual(expectation)
+  testData.fileExpectations.forEach(expectation => {
+    expect(str).toEqual(expect.stringContaining(expectation))
   })
 }
 
@@ -125,5 +117,126 @@ describe("readFile", () => {
     return storage.openStorage(testData.storageLocation)
       .then(storageHandle => files.readFile(storageHandle, testData.cascFilePath))
       .then(buffer => testBuffer(buffer))
+  })
+})
+
+describe("CascReadable", () => {
+  let storageHandle: any
+  let readable: files.CascReadable
+
+  beforeAll(() => {
+    storageHandle = storage.openStorageSync(testData.storageLocation)
+  })
+
+  beforeEach(() => {
+    readable = new files.CascReadable({ encoding: "utf8" })
+  })
+
+  test("reads file with fileHandle provided", done => {
+    files.openFile(storageHandle, testData.cascFilePath, (error, fileHandle) => {
+      if(error) {
+        done.fail(error)
+      }
+
+      readable.fileHandle = fileHandle
+
+      readable.on('error', error => {
+        done.fail(error)
+      })
+
+
+      readable.on("readable", () => {
+        let text = readable.read(testData.fileReadTest1.length)
+        expect(text).toHaveLength(testData.fileReadTest1.length)
+        expect(text).toEqual(testData.fileReadTest1)
+
+        text = readable.read(testData.fileReadTest2.length)
+        expect(text).toHaveLength(testData.fileReadTest2.length)
+        expect(text).toEqual(testData.fileReadTest2)
+
+        done()
+      })
+    })
+  })
+
+  test("reads file with storageHandle and path provided", done => {
+    readable.storageHandle = storageHandle
+    readable.path = testData.cascFilePath
+
+    readable.on('error', error => {
+      done.fail(error)
+    })
+
+    readable.on("readable", () => {
+      let text = readable.read(testData.fileReadTest1.length)
+      expect(text).toHaveLength(testData.fileReadTest1.length)
+      expect(text).toEqual(testData.fileReadTest1)
+
+      text = readable.read(testData.fileReadTest2.length)
+      expect(text).toHaveLength(testData.fileReadTest2.length)
+      expect(text).toEqual(testData.fileReadTest2)
+
+      done()
+    })
+  })
+
+  test("reads file should end stream when the entire file has been read", done => {
+    readable.storageHandle = storageHandle
+    readable.path = testData.cascFilePath
+
+    readable.on('error', error => {
+      done.fail(error)
+    })
+
+    readable.on('end', () => {
+      done()
+    })
+
+    readable.resume()
+  })
+
+  test("reads file should throw error if fileHandle is undefined and path is not provided", done => {
+    readable.on('error', error => {
+      done()
+    })
+
+    readable.on('readable', () => {
+      readable.read(10)
+    })
+  })
+})
+
+describe("createReadStream", () => {
+  let storageHandle: any
+  beforeAll(() => {
+    storageHandle = storage.openStorageSync(testData.storageLocation)
+  })
+
+  test("creates readable with fileHandle set when only fileHandle is provided", () => {
+    const fileHandle = files.openFileSync(storageHandle, testData.cascFilePath)
+
+    const readable = files.createReadStream(fileHandle) as files.CascReadable
+    expect(readable.fileHandle).toEqual(fileHandle)
+  })
+
+  test("creates readable with fileHandle set when fileHandle and options are provided", () => {
+    const fileHandle = files.openFileSync(storageHandle, testData.cascFilePath)
+
+    const readable = files.createReadStream(fileHandle, {}) as files.CascReadable
+    expect(readable.fileHandle).toEqual(fileHandle)
+  })
+
+  test("creates readable with storageHandle and path set when storageHandle and path are provided", () => {
+    const readable = files.createReadStream(storageHandle, testData.cascFilePath) as files.CascReadable
+
+    expect(readable.storageHandle).toEqual(storageHandle)
+    expect(readable.path).toEqual(testData.cascFilePath)
+  })
+
+  test("creates readable with storageHandle and path set when storageHandle, path and options are provided", () => {
+    const readable = files.createReadStream(storageHandle, testData.cascFilePath, {}) as files.CascReadable
+
+    expect(readable.storageHandle).toEqual(storageHandle)
+    expect(readable.path).toEqual(testData.cascFilePath)
   })
 })
