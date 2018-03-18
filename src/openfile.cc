@@ -50,7 +50,7 @@ Napi::Value OpenCascFileSync(const Napi::CallbackInfo& info) {
         return env.Null();
     }
 
-    return Napi::External<void>::New(env, (void*)fileHandle, &CloseFile);
+    return Napi::External<void>::New(env, (void*)fileHandle, CloseFile);
 }
 
 Napi::Value OpenCascFile(const Napi::CallbackInfo& info) {
@@ -101,7 +101,7 @@ void openfile::OpenAsyncWorker::OnOK() {
 }
 
 Napi::Value openfile::OpenAsyncWorker::FileHandle() {
-    return Napi::External<void>::New(Env(), (void*)fileHandle, &CloseFile);
+    return Napi::External<void>::New(Env(), (void*)fileHandle, CloseFile);
 }
 
 ////////////////////////////////////////////////////////////////////////////////

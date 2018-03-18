@@ -1,4 +1,3 @@
-#include <iostream>
 #include <string>
 #include <CascLib.h>
 #include "node_api.h"
@@ -8,7 +7,6 @@
 #include "storage.h"
 
 void CloseStorage(Napi::Env env, void* data) {
-    cout << "Closing Storage" << endl;
     if(!CascCloseStorage((HANDLE)data)) {
         errors::ThrowJavascriptErrorWithLastError(env, "Unable to close CASC storage.");
     }
@@ -60,7 +58,7 @@ Napi::Value OpenCascStorageSync(const Napi::CallbackInfo& info) {
         return env.Null();
     }
 
-    return Napi::External<void>::New(env, (void*)hStorage, &CloseStorage);
+    return Napi::External<void>::New(env, (void*)hStorage, CloseStorage);
 }
 
 Napi::Value OpenCascStorage(const Napi::CallbackInfo& info) {
@@ -111,7 +109,7 @@ void storage::OpenAsyncWorker::OnOK() {
 }
 
 Napi::Value storage::OpenAsyncWorker::StorageHandle() {
-    return Napi::External<void>::New(Env(), (void*)storageHandle, &CloseStorage);
+    return Napi::External<void>::New(Env(), (void*)storageHandle, CloseStorage);
 }
 
 ////////////////////////////////////////////////////////////////////////////////
