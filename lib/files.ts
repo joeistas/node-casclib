@@ -27,7 +27,10 @@ export function read(fileHandle: any, callback?: ReadFileCallback): null | Promi
 
 export function readFileSync(storageHandle: any, filePath: string): Buffer {
   const fileHandle = openFileSync(storageHandle, filePath)
-  return readSync(fileHandle)
+  const fileData = readSync(fileHandle)
+  closeFile(fileHandle)
+
+  return fileData
 }
 
 export function readFile(storageHandle: any, filePath: string): Promise<Buffer>
@@ -39,13 +42,23 @@ export function readFile(storageHandle: any, filePath: string, callback?: ReadFi
         throw error
       }
 
-      read(fileHandle, callback)
+      read(fileHandle, (error, fileData) => {
+        closeFile(fileHandle)
+        callback(error, fileData)
+      })
     })
     return null
   }
 
   return openFile(storageHandle, filePath)
-    .then(fileHandle => read(fileHandle))
+    .then(fileHandle => {
+      return read(fileHandle)
+        .then(fileData => {
+          closeFile(fileHandle)
+
+          return fileData
+        })
+    })
 }
 
 export class FileReadable extends Readable {
@@ -66,6 +79,18 @@ export class FileReadable extends Readable {
     }
   }
 
+  _destroy(error: Error, callback: (error?: Error) => void) {
+    if(this.storageHandle && this.path && this.storageHandle) {
+      try {
+        this.closeFile()
+        callback(error)
+      }
+      catch(e) {
+        callback(e)
+      }
+    }
+  }
+
   private openFile(callback: () => void) {
     if(!this.path) {
       this.error(new Error("'fileHandle' or 'storageHandle' and 'path' must be provided."))
@@ -83,6 +108,13 @@ export class FileReadable extends Readable {
     })
   }
 
+  private closeFile() {
+    if(this.storageHandle && this.path && this.fileHandle) {
+      closeFile(this.fileHandle)
+      this.fileHandle = null
+    }
+  }
+
   private getData(size: number) {
     addon.readCascFileBuffer(this.fileHandle, size, (error: Error, buffer: Buffer) => {
       if(error) {
@@ -90,7 +122,13 @@ export class FileReadable extends Readable {
         return
       }
 
-      buffer.length === 0 ? this.push(null) : this.push(buffer)
+      if(buffer.length === 0) {
+        this.closeFile()
+        this.push(null)
+      }
+      else {
+        this.push(buffer)
+      }
     })
   }
 
@@ -115,4 +153,8 @@ export function createReadStream(handle: any, filePathOrOptions?: string | Reada
   }
 
   return readable
+}
+
+export function closeFile(fileHandle: any) {
+  addon.closeCascFile(fileHandle)
 }

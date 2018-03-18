@@ -27,12 +27,6 @@ bool ValidateOpenFileArguments(const Napi::CallbackInfo& info) {
     return true;
 }
 
-void CloseFile(Napi::Env env, void* fileHandle) {
-    if(!CascCloseFile((HANDLE)fileHandle)) {
-        errors::ThrowJavascriptErrorWithLastError(env, "Unable to close file.");
-    }
-}
-
 Napi::Value OpenCascFileSync(const Napi::CallbackInfo& info) {
     Napi::Env env = info.Env();
 
@@ -50,7 +44,7 @@ Napi::Value OpenCascFileSync(const Napi::CallbackInfo& info) {
         return env.Null();
     }
 
-    return Napi::External<void>::New(env, (void*)fileHandle, CloseFile);
+    return Napi::External<void>::New(env, (void*)fileHandle);
 }
 
 Napi::Value OpenCascFile(const Napi::CallbackInfo& info) {
@@ -79,6 +73,25 @@ Napi::Value OpenCascFile(const Napi::CallbackInfo& info) {
     }
 }
 
+void CloseCascFile(const Napi::CallbackInfo& info) {
+    Napi::Env env = info.Env();
+
+    if(info.Length() < 1) {
+        errors::ThrowJavascriptTypeError(env, "fileHandle is required.");
+        return;
+    }
+
+    if(info[0].IsNull() || info[0].IsUndefined()) {
+        errors::ThrowJavascriptTypeError(env, "fileHandle cannot be null or undefined.");
+        return;
+    }
+
+    HANDLE fileHandle = (HANDLE)info[0].As<Napi::External<void>>().Data();
+    if(!CascCloseFile(fileHandle)) {
+        errors::ThrowJavascriptErrorWithLastError(env, "Unable to close file.");
+    }
+}
+
 ////////////////////////////////////////////////////////////////////////////////
 // OpenAsyncWorker class
 ////////////////////////////////////////////////////////////////////////////////
@@ -101,7 +114,7 @@ void openfile::OpenAsyncWorker::OnOK() {
 }
 
 Napi::Value openfile::OpenAsyncWorker::FileHandle() {
-    return Napi::External<void>::New(Env(), (void*)fileHandle, CloseFile);
+    return Napi::External<void>::New(Env(), (void*)fileHandle);
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -140,5 +153,10 @@ void openfile::Init(Napi::Env env, Napi::Object exports) {
     exports.Set(
         Napi::String::New(env, "openCascFile"),
         Napi::Function::New(env, OpenCascFile)
+    );
+
+    exports.Set(
+        Napi::String::New(env, "closeCascFile"),
+        Napi::Function::New(env, CloseCascFile)
     );
 }

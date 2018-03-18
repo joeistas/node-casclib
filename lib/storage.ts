@@ -70,3 +70,7 @@ export function getStorageInfo(storageHandle: any): StorageInfo {
     installedLocales: localeMaskToList(info.installedLocales),
   }
 }
+
+export function closeStorage(storageHandle: any) {
+  addon.closeCascStorage(storageHandle)
+}

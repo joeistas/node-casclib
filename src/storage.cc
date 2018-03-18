@@ -6,12 +6,6 @@
 #include "errors.h"
 #include "storage.h"
 
-void CloseStorage(Napi::Env env, void* data) {
-    if(!CascCloseStorage((HANDLE)data)) {
-        errors::ThrowJavascriptErrorWithLastError(env, "Unable to close CASC storage.");
-    }
-}
-
 bool ValidateOpenStorageArguments(const Napi::CallbackInfo& info) {
     Napi::Env env = info.Env();
 
@@ -58,7 +52,7 @@ Napi::Value OpenCascStorageSync(const Napi::CallbackInfo& info) {
         return env.Null();
     }
 
-    return Napi::External<void>::New(env, (void*)hStorage, CloseStorage);
+    return Napi::External<void>::New(env, (void*)hStorage);
 }
 
 Napi::Value OpenCascStorage(const Napi::CallbackInfo& info) {
@@ -87,6 +81,26 @@ Napi::Value OpenCascStorage(const Napi::CallbackInfo& info) {
     }
 }
 
+void CloseCascStorage(const Napi::CallbackInfo& info) {
+    Napi::Env env = info.Env();
+
+    if(info.Length() < 1) {
+        errors::ThrowJavascriptTypeError(env, "storageHandle is required.");
+        return;
+    }
+
+    if(info[0].IsNull() || info[0].IsUndefined()) {
+        errors::ThrowJavascriptTypeError(env, "storageHandle cannot be null or undefined.");
+        return;
+    }
+
+    HANDLE hStorage = (HANDLE)info[0].As<Napi::External<void>>().Data();
+    if(!CascCloseStorage(hStorage)) {
+        errors::ThrowJavascriptErrorWithLastError(env, "Unable to close CASC storage.");
+    }
+}
+
+
 ////////////////////////////////////////////////////////////////////////////////
 // OpenAsyncWorker class
 ////////////////////////////////////////////////////////////////////////////////
@@ -109,7 +123,7 @@ void storage::OpenAsyncWorker::OnOK() {
 }
 
 Napi::Value storage::OpenAsyncWorker::StorageHandle() {
-    return Napi::External<void>::New(Env(), (void*)storageHandle, CloseStorage);
+    return Napi::External<void>::New(Env(), (void*)storageHandle);
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -148,5 +162,10 @@ void storage::Init(Napi::Env env, Napi::Object exports) {
     exports.Set(
         Napi::String::New(env, "openCascStorage"),
         Napi::Function::New(env, OpenCascStorage)
+    );
+
+    exports.Set(
+        Napi::String::New(env, "closeCascStorage"),
+        Napi::Function::New(env, CloseCascStorage)
     );
 }

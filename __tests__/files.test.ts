@@ -19,6 +19,9 @@ test("openFileSync", () => {
   const fileHandle = files.openFileSync(storageHandle, testData.cascFilePath)
 
   expect(fileHandle).toBeDefined()
+
+  files.closeFile(fileHandle)
+  storage.closeStorage(storageHandle)
 })
 
 describe("openFile", () => {
@@ -35,6 +38,8 @@ describe("openFile", () => {
 
         expect(fileHandle).toBeDefined()
 
+        files.closeFile(fileHandle)
+        storage.closeStorage(storageHandle)
         done()
       })
     })
@@ -42,8 +47,14 @@ describe("openFile", () => {
 
   test("without callback", () => {
     return storage.openStorage(testData.storageLocation)
-      .then(storageHandle => files.openFile(storageHandle, testData.cascFilePath))
-      .then(fileHandle => expect(fileHandle).toBeDefined())
+      .then(storageHandle => {
+        return files.openFile(storageHandle, testData.cascFilePath)
+          .then(fileHandle => {
+            expect(fileHandle).toBeDefined()
+            files.closeFile(fileHandle)
+            storage.closeStorage(storageHandle)
+          })
+      })
   })
 })
 
@@ -54,6 +65,9 @@ test("readSync", () => {
   const fileBuffer = files.readSync(fileHandle)
 
   testBuffer(fileBuffer)
+
+  files.closeFile(fileHandle)
+  storage.closeStorage(storageHandle)
 })
 
 describe("read", () => {
@@ -74,6 +88,8 @@ describe("read", () => {
           }
 
           testBuffer(buffer)
+          files.closeFile(fileHandle)
+          storage.closeStorage(storageHandle)
           done()
         })
       })
@@ -82,9 +98,18 @@ describe("read", () => {
 
   test("without callback", () => {
     return storage.openStorage(testData.storageLocation)
-      .then(storageHandle => files.openFile(storageHandle, testData.cascFilePath))
-      .then(fileHandle => files.read(fileHandle))
-      .then(buffer => testBuffer(buffer))
+      .then(storageHandle => {
+        return files.openFile(storageHandle, testData.cascFilePath)
+          .then(fileHandle => {
+            return files.read(fileHandle)
+              .then(buffer => {
+                testBuffer(buffer)
+
+                files.closeFile(fileHandle)
+                storage.closeStorage(storageHandle)
+              })
+          })
+      })
   })
 })
 
@@ -93,6 +118,8 @@ test("readFileSync", () => {
   const fileBuffer = files.readFileSync(storageHandle, testData.cascFilePath)
 
   testBuffer(fileBuffer)
+
+  storage.closeStorage(storageHandle)
 })
 
 describe("readFile", () => {
@@ -108,6 +135,8 @@ describe("readFile", () => {
         }
 
         testBuffer(buffer)
+
+        storage.closeStorage(storageHandle)
         done()
       })
     })
@@ -115,8 +144,14 @@ describe("readFile", () => {
 
   test("without callback", () => {
     return storage.openStorage(testData.storageLocation)
-      .then(storageHandle => files.readFile(storageHandle, testData.cascFilePath))
-      .then(buffer => testBuffer(buffer))
+      .then(storageHandle => {
+        return files.readFile(storageHandle, testData.cascFilePath)
+          .then(buffer => {
+            testBuffer(buffer)
+
+            storage.closeStorage(storageHandle)
+          })
+      })
   })
 })
 
@@ -126,6 +161,10 @@ describe("FileReadable", () => {
 
   beforeAll(() => {
     storageHandle = storage.openStorageSync(testData.storageLocation)
+  })
+
+  afterAll(() => {
+    storage.closeStorage(storageHandle)
   })
 
   beforeEach(() => {
@@ -210,6 +249,10 @@ describe("createReadStream", () => {
   let storageHandle: any
   beforeAll(() => {
     storageHandle = storage.openStorageSync(testData.storageLocation)
+  })
+
+  afterAll(() => {
+    storage.closeStorage(storageHandle)
   })
 
   test("creates readable with fileHandle set when only fileHandle is provided", () => {

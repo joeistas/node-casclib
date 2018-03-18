@@ -8,12 +8,16 @@ describe("openStorageSync", () => {
     const storageHandle = storage.openStorageSync(testData.storageLocation)
 
     expect(storageHandle).toBeDefined()
+
+    storage.closeStorage(storageHandle)
   })
 
   test("open storage for the specified locales", () => {
     const storageHandle = storage.openStorageSync(testData.storageLocation, [ "USUS", "KOKR" ])
 
     expect(storageHandle).toBeDefined()
+
+    storage.closeStorage(storageHandle)
   })
 })
 
@@ -23,6 +27,7 @@ describe("openStorage", () => {
       storage.openStorage(testData.storageLocation, (error, storageHandle) => {
         expect(error).toBeUndefined()
         expect(storageHandle).toBeDefined()
+        storage.closeStorage(storageHandle)
         done()
       })
     })
@@ -31,6 +36,7 @@ describe("openStorage", () => {
       storage.openStorage(testData.storageLocation, [ "USUS", "KOKR" ], (error, storageHandle) => {
         expect(error).toBeUndefined()
         expect(storageHandle).toBeDefined()
+        storage.closeStorage(storageHandle)
         done()
       })
     })
@@ -41,6 +47,8 @@ describe("openStorage", () => {
       return storage.openStorage(testData.storageLocation)
         .then(storageHandle => {
           expect(storageHandle).toBeDefined()
+
+          storage.closeStorage(storageHandle)
         })
     })
 
@@ -48,6 +56,8 @@ describe("openStorage", () => {
       return storage.openStorage(testData.storageLocation, [ "USUS", "KOKR" ])
         .then(storageHandle => {
           expect(storageHandle).toBeDefined()
+
+          storage.closeStorage(storageHandle)
         })
     })
   })
@@ -62,6 +72,10 @@ describe("getStorageInfo", () => {
     gameInfo = storage.getStorageInfo(storageHandle)
   })
 
+  afterAll(() => {
+    storage.closeStorage(storageHandle)
+  })
+  
   test("storage info contains a file count", () => {
     expect(gameInfo.fileCount).toBeDefined()
   })

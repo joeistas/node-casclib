@@ -13,6 +13,8 @@ test("findFilesSync", () => {
   expect(result).toHaveProperty("baseName")
   expect(result).toHaveProperty("fileSize")
   expect(result).toHaveProperty("fullName", testData.searchPattern)
+
+  storage.closeStorage(storageHandle)
 })
 
 describe("findFiles", () => {
@@ -34,6 +36,7 @@ describe("findFiles", () => {
           expect(result).toHaveProperty("fileSize")
           expect(result).toHaveProperty("fullName", testData.searchPattern)
 
+          storage.closeStorage(storageHandle)
           done()
         })
       })
@@ -56,6 +59,7 @@ describe("findFiles", () => {
           expect(result).toHaveProperty("fileSize")
           expect(result).toHaveProperty("fullName", testData.searchPattern)
 
+          storage.closeStorage(storageHandle)
           done()
         })
       })
@@ -65,26 +69,34 @@ describe("findFiles", () => {
   describe("without callback", () => {
     test("list file path in arguments", () => {
       return storage.openStorage(testData.storageLocation)
-        .then(storageHandle => find.findFiles(storageHandle, testData.searchPattern, ""))
-        .then(results => {
-          expect(results).toHaveLength(1);
-          const result = results[0]
-          expect(result).toHaveProperty("baseName")
-          expect(result).toHaveProperty("fileSize")
-          expect(result).toHaveProperty("fullName", testData.searchPattern)
+        .then(storageHandle => {
+          return find.findFiles(storageHandle, testData.searchPattern, "")
+            .then((results) => {
+              expect(results).toHaveLength(1);
+              const result = results[0]
+              expect(result).toHaveProperty("baseName")
+              expect(result).toHaveProperty("fileSize")
+              expect(result).toHaveProperty("fullName", testData.searchPattern)
+
+              storage.closeStorage(storageHandle)
+            })
         })
     })
 
     test("without list file path in arguments", () => {
       return storage.openStorage(testData.storageLocation)
-        .then(storageHandle => find.findFiles(storageHandle, testData.searchPattern))
-        .then(results => {
-          expect(results).toHaveLength(1);
-          const result = results[0]
-          expect(result).toHaveProperty("baseName")
-          expect(result).toHaveProperty("fileSize")
-          expect(result).toHaveProperty("fullName", testData.searchPattern)
-        })
+      .then(storageHandle => {
+        return find.findFiles(storageHandle, testData.searchPattern)
+          .then(results => {
+            expect(results).toHaveLength(1);
+            const result = results[0]
+            expect(result).toHaveProperty("baseName")
+            expect(result).toHaveProperty("fileSize")
+            expect(result).toHaveProperty("fullName", testData.searchPattern)
+
+            storage.closeStorage(storageHandle)
+          })
+      })
     })
   })
 })
