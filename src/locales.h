@@ -5,7 +5,7 @@
 namespace locales {
     struct LOCALE {
         DWORD mask;
-        char* shortName;
+        const char* shortName;
     } const LOCALES[] = {
         { CASC_LOCALE_ALL, "ALL" },
         { CASC_LOCALE_NONE, "NONE" },

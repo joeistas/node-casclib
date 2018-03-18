@@ -44,7 +44,7 @@ Napi::Value OpenCascFileSync(const Napi::CallbackInfo& info) {
     string fileName = info[1].As<Napi::String>().Utf8Value();
 
     HANDLE fileHandle;
-    if(!CascOpenFile(hStorage, fileName.c_str(), CASC_LOCALE_ALL, NULL, &fileHandle)) {
+    if(!CascOpenFile(hStorage, fileName.c_str(), CASC_LOCALE_ALL, 0, &fileHandle)) {
         errors::ThrowJavascriptErrorWithLastError(env, "Unable to open file.");
 
         return env.Null();
@@ -89,7 +89,7 @@ openfile::OpenAsyncWorker::OpenAsyncWorker(const Napi::Function& callback, const
 }
 
 void openfile::OpenAsyncWorker::Execute() {
-    if(!CascOpenFile(storageHandle, fileName.c_str(), CASC_LOCALE_ALL, NULL, &fileHandle)) {
+    if(!CascOpenFile(storageHandle, fileName.c_str(), CASC_LOCALE_ALL, 0, &fileHandle)) {
         int errorCode = GetLastError();
         string errorMessage = errors::ErrorMessage("Unable to open file.", errorCode);
         SetError(errorMessage);

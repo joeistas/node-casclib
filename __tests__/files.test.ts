@@ -120,16 +120,16 @@ describe("readFile", () => {
   })
 })
 
-describe("CascReadable", () => {
+describe("FileReadable", () => {
   let storageHandle: any
-  let readable: files.CascReadable
+  let readable: files.FileReadable
 
   beforeAll(() => {
     storageHandle = storage.openStorageSync(testData.storageLocation)
   })
 
   beforeEach(() => {
-    readable = new files.CascReadable({ encoding: "utf8" })
+    readable = new files.FileReadable({ encoding: "utf8" })
   })
 
   test("reads file with fileHandle provided", done => {
@@ -215,26 +215,26 @@ describe("createReadStream", () => {
   test("creates readable with fileHandle set when only fileHandle is provided", () => {
     const fileHandle = files.openFileSync(storageHandle, testData.cascFilePath)
 
-    const readable = files.createReadStream(fileHandle) as files.CascReadable
+    const readable = files.createReadStream(fileHandle) as files.FileReadable
     expect(readable.fileHandle).toEqual(fileHandle)
   })
 
   test("creates readable with fileHandle set when fileHandle and options are provided", () => {
     const fileHandle = files.openFileSync(storageHandle, testData.cascFilePath)
 
-    const readable = files.createReadStream(fileHandle, {}) as files.CascReadable
+    const readable = files.createReadStream(fileHandle, {}) as files.FileReadable
     expect(readable.fileHandle).toEqual(fileHandle)
   })
 
   test("creates readable with storageHandle and path set when storageHandle and path are provided", () => {
-    const readable = files.createReadStream(storageHandle, testData.cascFilePath) as files.CascReadable
+    const readable = files.createReadStream(storageHandle, testData.cascFilePath) as files.FileReadable
 
     expect(readable.storageHandle).toEqual(storageHandle)
     expect(readable.path).toEqual(testData.cascFilePath)
   })
 
   test("creates readable with storageHandle and path set when storageHandle, path and options are provided", () => {
-    const readable = files.createReadStream(storageHandle, testData.cascFilePath, {}) as files.CascReadable
+    const readable = files.createReadStream(storageHandle, testData.cascFilePath, {}) as files.FileReadable
 
     expect(readable.storageHandle).toEqual(storageHandle)
     expect(readable.path).toEqual(testData.cascFilePath)

@@ -193,9 +193,7 @@ readfile::ReadBufferAsyncWorker::ReadBufferAsyncWorker(const Napi::Function& cal
 }
 
 void readfile::ReadBufferAsyncWorker::Execute() {
-    DWORD fileSize = CascGetFileSize(fileHandle, NULL);
     fileData = new LPBYTE[size]();
-
     CascReadFile(fileHandle, fileData, size, &read);
 }
 

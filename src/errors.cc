@@ -26,35 +26,31 @@ void errors::ThrowJavascriptErrorWithLastError(Napi::Env env, const string& mess
 }
 
 string errors::ErrorMessage(const string& message, const int errorCode) {
-    return string(message) + " " + ErrorCodeToString(errorCode);
+    return string(message) + " " + FormatedErrorCodeMessage(errorCode);
 }
 
-string errors::ErrorCodeToString(const int errorCode) {
-    char* message;
+string errors::FormatedErrorCodeMessage(const int errorCode) {
+    return string(errors::ErrorCodeToMessage(errorCode)) + " (CascLib:" + to_string(errorCode) + ")";
+}
+
+const char* errors::ErrorCodeToMessage(const int errorCode) {
     switch(errorCode) {
         case ERROR_INVALID_PARAMETER:
-            message = invalidParameterMessage;
-            break;
+            return invalidParameter;
 
         case ERROR_INVALID_HANDLE:
-            message = invalidHandleMessage;
-            break;
+            return invalidHandle;
 
         case ERROR_INSUFFICIENT_BUFFER:
-            message = insufficientBuffer;
-            break;
+            return insufficientBuffer;
 
         case ERROR_NOT_ENOUGH_MEMORY:
-            message = notEnoughMemory;
-            break;
+            return notEnoughMemory;
 
         case ERROR_FILE_NOT_FOUND:
-            message = fileNotFound;
-            break;
+            return fileNotFound;
 
         default:
-            message = "";
+            return "";
     }
-
-    return string(message) + " (CascLib:" + to_string(errorCode) + ")";
 }

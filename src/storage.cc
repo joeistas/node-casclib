@@ -8,6 +8,7 @@
 #include "storage.h"
 
 void CloseStorage(Napi::Env env, void* data) {
+    cout << "Closing Storage" << endl;
     if(!CascCloseStorage((HANDLE)data)) {
         errors::ThrowJavascriptErrorWithLastError(env, "Unable to close CASC storage.");
     }
@@ -74,14 +75,14 @@ Napi::Value OpenCascStorage(const Napi::CallbackInfo& info) {
 
     if(info.Length() >= 3 && info[2].IsFunction()) {
         Napi::Function callback = info[2].As<Napi::Function>();
-        storage::OpenAsyncWorker* worker = new storage::OpenAsyncWorker(callback, storagePath.Utf8Value().c_str(), localeMask);
+        storage::OpenAsyncWorker* worker = new storage::OpenAsyncWorker(callback, storagePath.Utf8Value(), localeMask);
         worker->Queue();
 
         return env.Null();
     }
     else {
         Napi::Promise::Deferred deferred(env);
-        storage::PromiseOpenAsyncWorker* worker = new storage::PromiseOpenAsyncWorker(deferred, storagePath.Utf8Value().c_str(), localeMask);
+        storage::PromiseOpenAsyncWorker* worker = new storage::PromiseOpenAsyncWorker(deferred, storagePath.Utf8Value(), localeMask);
         worker->Queue();
 
         return deferred.Promise();
@@ -92,13 +93,13 @@ Napi::Value OpenCascStorage(const Napi::CallbackInfo& info) {
 // OpenAsyncWorker class
 ////////////////////////////////////////////////////////////////////////////////
 
-storage::OpenAsyncWorker::OpenAsyncWorker(const Napi::Function& callback, const char* storagePath, const DWORD localeMask)
+storage::OpenAsyncWorker::OpenAsyncWorker(const Napi::Function& callback, const string& storagePath, const DWORD localeMask)
     : Napi::AsyncWorker(callback), storagePath { storagePath }, localeMask { localeMask } {
 
 }
 
 void storage::OpenAsyncWorker::Execute() {
-    if(!CascOpenStorage(storagePath, localeMask, &storageHandle)) {
+    if(!CascOpenStorage(storagePath.c_str(), localeMask, &storageHandle)) {
         int errorCode = GetLastError();
         string errorMessage = errors::ErrorMessage("Unable to open CASC storage.", errorCode);
         SetError(errorMessage);
@@ -122,7 +123,7 @@ void PromiseOpenCallback(const Napi::CallbackInfo& info) {
 
 }
 
-storage::PromiseOpenAsyncWorker::PromiseOpenAsyncWorker(const Napi::Promise::Deferred& deferred, const char* storagePath, const DWORD localeMask)
+storage::PromiseOpenAsyncWorker::PromiseOpenAsyncWorker(const Napi::Promise::Deferred& deferred, const string& storagePath, const DWORD localeMask)
     : storage::OpenAsyncWorker(Napi::Function::New(deferred.Promise().Env(), PromiseOpenCallback), storagePath, localeMask),
     deferred { deferred } {
 

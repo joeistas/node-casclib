@@ -25,7 +25,7 @@ export function read(fileHandle: any, callback?: ReadFileCallback): null | Promi
   return addon.cascRead(fileHandle, callback)
 }
 
-export function readFileSync(storageHandle: any, filePath: string) {
+export function readFileSync(storageHandle: any, filePath: string): Buffer {
   const fileHandle = openFileSync(storageHandle, filePath)
   return readSync(fileHandle)
 }
@@ -48,7 +48,7 @@ export function readFile(storageHandle: any, filePath: string, callback?: ReadFi
     .then(fileHandle => read(fileHandle))
 }
 
-export class CascReadable extends Readable {
+export class FileReadable extends Readable {
   path: string | undefined
   storageHandle: any
   fileHandle: any
@@ -105,7 +105,7 @@ export function createReadStream(storageHandle: any, filePath: string, options?:
 export function createReadStream(handle: any, filePathOrOptions?: string | ReadableOptions, options?: ReadableOptions): Readable {
   const path = typeof filePathOrOptions === 'string' ? filePathOrOptions : undefined
   options = typeof filePathOrOptions !== 'string' ? filePathOrOptions : options
-  const readable = new CascReadable(options || {})
+  const readable = new FileReadable(options || {})
   readable.path = path
   if(path) {
     readable.storageHandle = handle

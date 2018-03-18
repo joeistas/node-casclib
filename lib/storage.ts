@@ -40,7 +40,7 @@ function localesToMask(locales: string[]): number {
   return mask
 }
 
-export function openStorageSync(path: string, locales: string[] = []) {
+export function openStorageSync(path: string, locales: string[] = [ 'ALL' ]) {
   return addon.openCascStorageSync(path, localesToMask(locales))
 }
 
@@ -48,7 +48,7 @@ export function openStorage(path: string): Promise<any>
 export function openStorage(path: string, locales: string[]): Promise<any>
 export function openStorage(path: string, callback: OpenStorageCallback): null
 export function openStorage(path: string, locales: string[], callback: OpenStorageCallback): null
-export function openStorage(path: string, localesOrCallback: string[] | OpenStorageCallback = [], callback?: OpenStorageCallback): null | Promise<any> {
+export function openStorage(path: string, localesOrCallback: string[] | OpenStorageCallback = [ 'ALL' ], callback?: OpenStorageCallback): null | Promise<any> {
   let locales = [ 'ALL' ]
   if(Array.isArray(localesOrCallback)) {
     locales = localesOrCallback

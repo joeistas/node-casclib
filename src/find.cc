@@ -57,7 +57,7 @@ vector<unique_ptr<FindResult>> FindFiles(HANDLE storageHandle, const char* searc
 Napi::Value FindResultsToValue(const Napi::Env env, vector<unique_ptr<FindResult>>& findResults) {
     Napi::Array array = Napi::Array::New(env);
 
-    for(int i = 0; i < findResults.size(); i++) {
+    for(unsigned int i = 0; i < findResults.size(); i++) {
         unique_ptr<FindResult> result = move(findResults.at(i));
         array.Set(
             Napi::Number::New(env, i),

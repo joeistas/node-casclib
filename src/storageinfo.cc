@@ -8,7 +8,7 @@
 using namespace std;
 using namespace storageinfo;
 
-char* storageinfo::GameName(const DWORD gameData) {
+const char* storageinfo::GameName(const DWORD gameData) {
     switch(gameData & CASC_GAME_MASK) {
         case CASC_GAME_HOTS:
             return gameHeroes;

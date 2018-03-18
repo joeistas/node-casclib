@@ -6,7 +6,7 @@
 namespace storage {
     class OpenAsyncWorker : public Napi::AsyncWorker {
     public:
-        OpenAsyncWorker(const Napi::Function& callback, const char* storagePath, const DWORD localeMask);
+        OpenAsyncWorker(const Napi::Function& callback, const string& storagePath, const DWORD localeMask);
 
     protected:
         void Execute() override;
@@ -15,14 +15,14 @@ namespace storage {
         Napi::Value StorageHandle();
 
     private:
-        const char* storagePath;
+        const string storagePath;
         const DWORD localeMask;
         HANDLE storageHandle;
     };
 
     class PromiseOpenAsyncWorker : public storage::OpenAsyncWorker {
     public:
-        PromiseOpenAsyncWorker(const Napi::Promise::Deferred& deferred, const char* storagePath, const DWORD localeMask);
+        PromiseOpenAsyncWorker(const Napi::Promise::Deferred& deferred, const string& storagePath, const DWORD localeMask);
 
     protected:
         void OnOK() override;
