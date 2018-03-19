@@ -1,16 +1,17 @@
 {
-  "main": "lib/binding.js",
+  "main": "./dist/binding.js",
+  "types": "./dist/binding.d.ts",
   "dependencies": {
     "node-addon-api": "^1.1.0"
   },
   "scripts": {
-    "prepublish": "tsc",
+    "prepare": "tsc",
     "build": "node-gyp build",
     "test": "jest"
   },
   "gypfile": true,
   "name": "casclib",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "CascLib node bindings",
   "author": "Joe Istas <joe.istas@istastech.com>",
   "license": "MIT",
