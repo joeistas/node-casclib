@@ -11,6 +11,7 @@ namespace errors {
     constexpr char insufficientBuffer[] = "Insufficient buffer.";
     constexpr char notEnoughMemory[] = "Not enough memory.";
     constexpr char fileNotFound[] = "File not found.";
+    constexpr char fileCorrupt[] = "File corrupt.";
 
     void ThrowJavascriptError(Napi::Env env, const string& message);
     void ThrowJavascriptTypeError(Napi::Env env, const string& message);

@@ -50,6 +50,9 @@ const char* errors::ErrorCodeToMessage(const int errorCode) {
         case ERROR_FILE_NOT_FOUND:
             return fileNotFound;
 
+        case ERROR_FILE_CORRUPT:
+            return fileCorrupt;
+            
         default:
             return "";
     }

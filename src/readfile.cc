@@ -22,10 +22,8 @@ LPBYTE* ReadFile(const HANDLE fileHandle, DWORD* fileSize) {
     return fileData;
 }
 
-void FinalizeFileData(Napi::Env env, LPBYTE* data, DWORD* size) {
-    for(DWORD i = 0; i < *size; i++, data++) {
-        delete data;
-    }
+void FinalizeFileData(Napi::Env env, LPBYTE* data) {
+    delete [] data;
 }
 
 bool ValidateReadArguments(const Napi::CallbackInfo& info) {
@@ -67,7 +65,7 @@ Napi::Value CascReadSync(const Napi::CallbackInfo& info) {
         return env.Null();
     }
 
-    return Napi::Buffer<LPBYTE>::New(env, fileData, fileSize, FinalizeFileData, &fileSize);
+    return Napi::Buffer<LPBYTE>::New(env, fileData, fileSize, FinalizeFileData);
 }
 
 Napi::Value CascRead(const Napi::CallbackInfo& info) {
@@ -143,8 +141,9 @@ void readfile::ReadAsyncWorker::Execute() {
 
     DWORD read = 0;
     if(!CascReadFile(fileHandle, fileData, fileSize, &read)) {
-        string message = errors::ErrorMessage("Failed to read file", GetLastError());
+        string message = errors::ErrorMessage("Failed to read file.", GetLastError());
         SetError(message);
+        return;
     }
 
     if(fileSize != read) {
@@ -157,7 +156,7 @@ void readfile::ReadAsyncWorker::OnOK() {
 }
 
 Napi::Value readfile::ReadAsyncWorker::Data() {
-    return Napi::Buffer<LPBYTE>::New(Env(), fileData, fileSize, FinalizeFileData, &fileSize);
+    return Napi::Buffer<LPBYTE>::New(Env(), fileData, fileSize, FinalizeFileData);
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -194,7 +193,10 @@ readfile::ReadBufferAsyncWorker::ReadBufferAsyncWorker(const Napi::Function& cal
 
 void readfile::ReadBufferAsyncWorker::Execute() {
     fileData = new LPBYTE[size]();
-    CascReadFile(fileHandle, fileData, size, &read);
+    if(!CascReadFile(fileHandle, fileData, size, &read)) {
+        string message = errors::ErrorMessage("Failed to read file data.", GetLastError());
+        SetError(message);
+    }
 }
 
 void readfile::ReadBufferAsyncWorker::OnOK() {
@@ -202,7 +204,7 @@ void readfile::ReadBufferAsyncWorker::OnOK() {
 }
 
 Napi::Value readfile::ReadBufferAsyncWorker::Data() {
-    return Napi::Buffer<LPBYTE>::New(Env(), fileData, read, FinalizeFileData, &read);
+    return Napi::Buffer<LPBYTE>::New(Env(), fileData, read, FinalizeFileData);
 }
 
 ////////////////////////////////////////////////////////////////////////////////
