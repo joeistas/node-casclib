@@ -38,7 +38,7 @@ vector<unique_ptr<FindResult>> FindFiles(HANDLE storageHandle, const char* searc
 
     HANDLE searchHandle = CascFindFirstFile(storageHandle, searchPattern, &findData, listFilePath);
 
-    if(!searchHandle) {
+    if(searchHandle == INVALID_HANDLE_VALUE) {
         return results;
     }
 
